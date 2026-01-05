@@ -1,11 +1,28 @@
 <template>
   <div class="ai-chat-container">
-    <MaAiChat :fill-container="true" />
+    <MaAiChat 
+      :fill-container="true"
+      :suggestions="suggestions"
+      :models="models"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { MaAiChat } from 'my-admin-framework'
+
+const suggestions = [
+  'Explain quantum computing',
+  'Write a Python function',
+  'What are the benefits of Vue.js?',
+  'Help me debug my code'
+]
+
+const models = [
+  { label: 'Llama 3.2', value: 'llama3.2' },
+  { label: 'Mistral', value: 'mistral' },
+  { label: 'Codellama', value: 'codellama' }
+]
 </script>
 
 <style scoped>
