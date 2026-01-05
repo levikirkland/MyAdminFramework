@@ -1,0 +1,70 @@
+{
+  "formTitle": "Create New User",
+  "submitLabel": "Create User",
+  "fields": [
+    {
+      "key": "username",
+      "component": "MaInput",
+      "label": "Username",
+      "props": {
+        "placeholder": "Enter username",
+        "required": true
+      },
+      "grid": { "span": 12 }
+    },
+    {
+      "key": "email",
+      "component": "MaInput",
+      "label": "Email Address",
+      "props": {
+        "type": "email",
+        "placeholder": "user@example.com",
+        "required": true
+      },
+      "grid": { "span": 12 }
+    },
+    {
+      "key": "role",
+      "component": "MaSelect",
+      "label": "Role",
+      "props": {
+        "options": [
+          { "label": "Administrator", "value": "admin" },
+          { "label": "Manager", "value": "manager" },
+          { "label": "User", "value": "user" }
+        ],
+        "placeholder": "Select a role"
+      },
+      "grid": { "span": 6 }
+    },
+    {
+      "key": "status",
+      "component": "MaRadio",
+      "label": "Status",
+      "props": {
+        "options": [
+          { "label": "Active", "value": "active" },
+          { "label": "Inactive", "value": "inactive" }
+        ]
+      },
+      "grid": { "span": 6 }
+    },
+    {
+      "key": "bio",
+      "component": "MaTextarea",
+      "label": "Bio",
+      "props": {
+        "rows": 3,
+        "placeholder": "Short biography..."
+      },
+      "grid": { "span": 24 }
+    },
+    {
+      "key": "newsletter",
+      "component": "MaCheckbox",
+      "label": "Subscribe to newsletter",
+      "props": {},
+      "grid": { "span": 24 }
+    }
+  ]
+}

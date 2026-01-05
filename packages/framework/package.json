@@ -1,0 +1,73 @@
+{
+  "name": "my-admin-framework",
+  "version": "0.0.4",
+  "description": "A comprehensive Vue 3 admin framework with 100+ customizable components including charts, forms, layouts, and AI chat interface",
+  "author": "Andy",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vue3",
+    "admin",
+    "framework",
+    "components",
+    "ui",
+    "typescript",
+    "admin-template",
+    "dashboard",
+    "ai-chat"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/MyAdminFramework.git"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/my-admin-framework.umd.cjs",
+  "module": "./dist/my-admin-framework.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/my-admin-framework.js",
+      "require": "./dist/my-admin-framework.umd.cjs"
+    },
+    "./style.css": "./dist/my-admin-framework.css",
+    "./dist/my-admin-framework.css": "./dist/my-admin-framework.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@floating-ui/vue": "^1.1.9",
+    "@tiptap/extension-image": "^3.13.0",
+    "@tiptap/extension-link": "^3.13.0",
+    "@tiptap/extension-text-align": "^3.13.0",
+    "@tiptap/extension-underline": "^3.13.0",
+    "@tiptap/starter-kit": "^3.13.0",
+    "@tiptap/vue-3": "^3.13.0",
+    "apexcharts": "^5.3.6",
+    "date-fns": "^4.1.0",
+    "lucide-vue-next": "^0.561.0",
+    "sortablejs": "^1.15.6",
+    "vue": "^3.5.24",
+    "vue-i18n": "^11.2.7",
+    "vue3-apexcharts": "^1.10.0",
+    "vuedraggable": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.8.1",
+    "jsdom": "^27.4.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^4.0.16",
+    "vue-tsc": "^3.1.4"
+  }
+}

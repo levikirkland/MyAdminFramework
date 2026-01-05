@@ -1,0 +1,18 @@
+{
+  "name": "my-admin-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "setup": "npm install && npm run build:framework",
+    "build:framework": "npm run build -w packages/framework",
+    "dev": "npm run dev:template",
+    "dev:framework": "npm run dev -w packages/framework",
+    "dev:template": "npm run dev -w packages/template",
+    "dev:simple": "npm run dev -w packages/simple-template"
+  },
+  "devDependencies": {
+    "sass": "^1.97.0"
+  }
+}

@@ -1,0 +1,61 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  
+  /* Framework Theme Variables - Light Mode */
+  --ma-primary: #4f46e5;
+  --ma-primary-hover: #4338ca;
+  --ma-primary-light: #e0e7ff; /* Used for focus rings */
+  
+  --ma-success: #10b981;
+  --ma-warning: #f59e0b;
+  --ma-danger: #ef4444;
+  --ma-info: #3b82f6;
+
+  --ma-text-main: #111827;
+  --ma-text-secondary: #6b7280;
+  --ma-text-disabled: #9ca3af;
+
+  --ma-bg-page: #f9fafb;
+  --ma-bg-card: #ffffff;
+  --ma-bg-header: #ffffff;
+  --ma-bg-secondary: #f3f4f6; /* Used for disabled states, hovers */
+  
+  --ma-border: #e5e7eb;
+  
+  /* Base styles */
+  color: var(--ma-text-main);
+  background-color: var(--ma-bg-page);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: var(--ma-primary);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--ma-primary-hover);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--ma-text-main);
+}
+
+#app {
+  width: 100%;
+}
