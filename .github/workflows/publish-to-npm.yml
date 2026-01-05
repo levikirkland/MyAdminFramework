@@ -9,6 +9,8 @@ jobs:
     # skip prereleases by default; remove this line if you want to publish prereleases
     if: github.event.release.prerelease == false
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout
