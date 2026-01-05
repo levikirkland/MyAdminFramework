@@ -257,11 +257,11 @@ const getInstructorInitials = (name: string): string => {
 .ma-course-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
 }
 
 .ma-course-card--featured {
-  border: 2px solid var(--ma-primary, #3b82f6);
+  border: 2px solid var(--ma-primary);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
 
@@ -269,7 +269,7 @@ const getInstructorInitials = (name: string): string => {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
@@ -287,7 +287,7 @@ const getInstructorInitials = (name: string): string => {
   width: 100%;
   padding-top: 56.25%; /* 16:9 aspect ratio */
   overflow: hidden;
-  background: var(--ma-bg-tertiary, #f3f4f6);
+  background: var(--ma-bg-secondary);
 }
 
 .ma-course-card__thumbnail img {
@@ -334,14 +334,14 @@ const getInstructorInitials = (name: string): string => {
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   z-index: 2;
   backdrop-filter: blur(4px);
 }
 
 .ma-course-card__bookmark:hover {
   background: white;
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
   transform: scale(1.1);
 }
 
@@ -423,7 +423,7 @@ const getInstructorInitials = (name: string): string => {
   display: flex;
   align-items: center;
   gap: 0.375rem;
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -433,7 +433,7 @@ const getInstructorInitials = (name: string): string => {
 .ma-course-card__title {
   font-size: 1.125rem;
   font-weight: 700;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   margin: 0;
   line-height: 1.4;
   display: -webkit-box;
@@ -444,7 +444,7 @@ const getInstructorInitials = (name: string): string => {
 
 .ma-course-card__description {
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   margin: 0;
   line-height: 1.6;
   display: -webkit-box;
@@ -463,7 +463,7 @@ const getInstructorInitials = (name: string): string => {
   display: flex;
   align-items: center;
   gap: 0.375rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   font-size: 0.8125rem;
 }
 
@@ -472,7 +472,7 @@ const getInstructorInitials = (name: string): string => {
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: var(--ma-bg-tertiary, #f9fafb);
+  background: var(--ma-bg-secondary);
   border-radius: 8px;
 }
 
@@ -482,7 +482,7 @@ const getInstructorInitials = (name: string): string => {
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  background: var(--ma-primary-light, #dbeafe);
+  background: var(--ma-primary-light);
 }
 
 .ma-course-card__instructor-avatar img {
@@ -498,7 +498,7 @@ const getInstructorInitials = (name: string): string => {
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
   font-size: 0.875rem;
 }
 
@@ -509,7 +509,7 @@ const getInstructorInitials = (name: string): string => {
 
 .ma-course-card__instructor-name {
   font-weight: 600;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   font-size: 0.875rem;
   white-space: nowrap;
   overflow: hidden;
@@ -518,7 +518,7 @@ const getInstructorInitials = (name: string): string => {
 
 .ma-course-card__instructor-title {
   font-size: 0.75rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -532,8 +532,8 @@ const getInstructorInitials = (name: string): string => {
 
 .ma-course-card__skill {
   padding: 0.25rem 0.625rem;
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-secondary);
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -541,8 +541,8 @@ const getInstructorInitials = (name: string): string => {
 
 .ma-course-card__skill-more {
   padding: 0.25rem 0.625rem;
-  background: var(--ma-primary-light, #dbeafe);
-  color: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary-light);
+  color: var(--ma-primary);
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -579,12 +579,12 @@ const getInstructorInitials = (name: string): string => {
 .ma-course-card__price-current {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .ma-course-card__enroll-btn {
   padding: 0.625rem 1.25rem;
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   border: none;
   border-radius: 6px;

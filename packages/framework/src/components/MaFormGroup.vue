@@ -99,7 +99,7 @@ withDefaults(defineProps<{
 
 .ma-help-text {
   font-size: 0.75rem;
-  color: var(--ma-text-secondary, #64748b);
+  color: var(--ma-text-secondary);
   margin-top: 4px;
   min-height: 18px;
 }

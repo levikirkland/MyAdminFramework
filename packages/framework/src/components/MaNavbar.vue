@@ -101,7 +101,7 @@ const isOpen = ref(false)
 <style scoped lang="scss">
 .ma-navbar {
   background: var(--ma-bg-header, #fff);
-  border-bottom: 1px solid var(--ma-border, #e5e7eb);
+  border-bottom: 1px solid var(--ma-border);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -130,7 +130,7 @@ const isOpen = ref(false)
   }
 
   &__link {
-    color: var(--ma-text-secondary, #6b7280);
+    color: var(--ma-text-secondary);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.2s;
@@ -164,7 +164,7 @@ const isOpen = ref(false)
     left: 0;
     right: 0;
     background: var(--ma-bg-header, #fff);
-    border-bottom: 1px solid var(--ma-border, #e5e7eb);
+    border-bottom: 1px solid var(--ma-border);
     padding: 16px;
     display: flex;
     flex-direction: column;

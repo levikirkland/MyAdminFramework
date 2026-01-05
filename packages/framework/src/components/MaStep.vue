@@ -129,7 +129,7 @@ const currentStatus = computed(() => {
 /* Line */
 .ma-step-line {
   position: absolute;
-  background-color: var(--ma-border, #e2e8f0);
+  background-color: var(--ma-border);
 }
 
 .ma-step.is-horizontal .ma-step-line {
@@ -156,7 +156,7 @@ const currentStatus = computed(() => {
   display: block;
   width: 0;
   height: 100%;
-  background: var(--ma-primary, #0284c7);
+  background: var(--ma-primary);
   transition: width 0.3s;
 }
 
@@ -188,20 +188,20 @@ const currentStatus = computed(() => {
   background: var(--ma-bg-main, #fff);
   transition: 0.3s;
   border-radius: 50%;
-  border: 2px solid var(--ma-text-secondary, #94a3b8);
-  color: var(--ma-text-secondary, #94a3b8);
+  border: 2px solid var(--ma-text-secondary);
+  color: var(--ma-text-secondary);
   flex-shrink: 0;
 }
 
 .is-process .ma-step-icon {
-  border-color: var(--ma-primary, #0284c7);
-  background: var(--ma-primary, #0284c7);
+  border-color: var(--ma-primary);
+  background: var(--ma-primary);
   color: #fff;
 }
 
 .is-finish .ma-step-icon {
-  border-color: var(--ma-primary, #0284c7);
-  color: var(--ma-primary, #0284c7);
+  border-color: var(--ma-primary);
+  color: var(--ma-primary);
   background: var(--ma-bg-main, #fff);
 }
 
@@ -216,16 +216,16 @@ const currentStatus = computed(() => {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--ma-border, #e2e8f0);
+  background-color: var(--ma-border);
   transition: all 0.3s;
 }
 
 .is-process .ma-step-icon-dot {
-  background-color: var(--ma-primary, #0284c7);
+  background-color: var(--ma-primary);
 }
 
 .is-finish .ma-step-icon-dot {
-  background-color: var(--ma-primary, #0284c7);
+  background-color: var(--ma-primary);
 }
 
 .is-error .ma-step-icon-dot {
@@ -260,7 +260,7 @@ const currentStatus = computed(() => {
   font-size: 1rem;
   line-height: 24px;
   font-weight: 600;
-  color: var(--ma-text-secondary, #64748b);
+  color: var(--ma-text-secondary);
 }
 
 .is-process .ma-step-title,
@@ -274,7 +274,7 @@ const currentStatus = computed(() => {
 
 .ma-step-description {
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #64748b);
+  color: var(--ma-text-secondary);
   margin-top: 4px;
 }
 </style>

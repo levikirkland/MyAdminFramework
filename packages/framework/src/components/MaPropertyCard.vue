@@ -206,7 +206,7 @@ const handleContact = () => {
   flex-direction: column;
   background: var(--ma-bg-card, #fff);
   border-radius: var(--ma-border-radius, 12px);
-  border: 1px solid var(--ma-border, #e5e7eb);
+  border: 1px solid var(--ma-border);
   overflow: hidden;
   transition: all 0.3s ease;
 }
@@ -253,7 +253,7 @@ const handleContact = () => {
 }
 
 .ma-property-card__status--sold {
-  background: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-text-secondary);
   color: white;
 }
 
@@ -290,7 +290,7 @@ const handleContact = () => {
   position: relative;
   width: 100%;
   height: 240px;
-  background: var(--ma-bg-tertiary, #f3f4f6);
+  background: var(--ma-bg-secondary);
 }
 
 .ma-property-card--compact .ma-property-card__images {
@@ -371,7 +371,7 @@ const handleContact = () => {
   backdrop-filter: blur(8px);
   border: none;
   border-radius: 50%;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   cursor: pointer;
   transition: all 0.2s ease;
   z-index: 2;
@@ -401,7 +401,7 @@ const handleContact = () => {
 .ma-property-card__price {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .ma-property-card--compact .ma-property-card__price {
@@ -411,13 +411,13 @@ const handleContact = () => {
 .ma-property-card__price-frequency {
   font-size: 1rem;
   font-weight: 400;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .ma-property-card__type {
   padding: 4px 10px;
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-secondary);
   border-radius: 6px;
   font-size: 0.8125rem;
   font-weight: 500;
@@ -428,7 +428,7 @@ const handleContact = () => {
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.3;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .ma-property-card--compact .ma-property-card__title {
@@ -442,14 +442,14 @@ const handleContact = () => {
 }
 
 .ma-property-card__title a:hover {
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 .ma-property-card__location {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   font-size: 0.9375rem;
 }
 
@@ -457,8 +457,8 @@ const handleContact = () => {
   display: flex;
   gap: 1.5rem;
   padding: 1rem 0;
-  border-top: 1px solid var(--ma-border, #e5e7eb);
-  border-bottom: 1px solid var(--ma-border, #e5e7eb);
+  border-top: 1px solid var(--ma-border);
+  border-bottom: 1px solid var(--ma-border);
 }
 
 .ma-property-card--compact .ma-property-card__specs {
@@ -470,12 +470,12 @@ const handleContact = () => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   font-weight: 500;
 }
 
 .ma-property-card__spec .spec-label {
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   font-weight: 400;
 }
 
@@ -490,8 +490,8 @@ const handleContact = () => {
   align-items: center;
   gap: 0.375rem;
   padding: 0.375rem 0.75rem;
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-primary, #1f2937);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-main);
   border-radius: 6px;
   font-size: 0.8125rem;
   font-weight: 500;
@@ -503,7 +503,7 @@ const handleContact = () => {
 
 .ma-property-card__feature--more {
   background: transparent;
-  border: 1px dashed var(--ma-border, #e5e7eb);
+  border: 1px dashed var(--ma-border);
 }
 
 .ma-property-card__feature--more svg {
@@ -515,7 +515,7 @@ const handleContact = () => {
   align-items: center;
   gap: 0.75rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--ma-border, #e5e7eb);
+  border-top: 1px solid var(--ma-border);
   margin-top: auto;
 }
 
@@ -529,7 +529,7 @@ const handleContact = () => {
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--ma-border, #e5e7eb);
+  border: 2px solid var(--ma-border);
 }
 
 .ma-property-card__agent-avatar img {
@@ -542,8 +542,8 @@ const handleContact = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ma-primary-light, #dbeafe);
-  color: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary-light);
+  color: var(--ma-primary);
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -556,12 +556,12 @@ const handleContact = () => {
 .ma-property-card__agent-name {
   font-weight: 600;
   font-size: 0.9375rem;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .ma-property-card__agent-company {
   font-size: 0.8125rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .ma-property-card__contact-btn {
@@ -569,7 +569,7 @@ const handleContact = () => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   border: none;
   border-radius: 6px;

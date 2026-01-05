@@ -126,7 +126,7 @@ const formatDate = (date: Date | string): string => {
 .ma-job-card {
   background: var(--ma-bg-card, #fff);
   border-radius: 16px;
-  border: 1px solid var(--ma-border, #e5e7eb);
+  border: 1px solid var(--ma-border);
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
@@ -138,7 +138,7 @@ const formatDate = (date: Date | string): string => {
 .ma-job-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
 }
 
 .ma-job-card.is-featured {
@@ -177,7 +177,7 @@ const formatDate = (date: Date | string): string => {
   height: 64px;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid var(--ma-border, #e5e7eb);
+  border: 1px solid var(--ma-border);
   background: white;
   display: flex;
   align-items: center;
@@ -200,7 +200,7 @@ const formatDate = (date: Date | string): string => {
   margin: 0 0 8px 0;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -208,7 +208,7 @@ const formatDate = (date: Date | string): string => {
 .job-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   line-height: 1.2;
 }
 
@@ -218,7 +218,7 @@ const formatDate = (date: Date | string): string => {
   align-items: center;
   gap: 12px;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--ma-border, #e5e7eb);
+  border-bottom: 1px solid var(--ma-border);
 }
 
 .detail-item {
@@ -226,7 +226,7 @@ const formatDate = (date: Date | string): string => {
   align-items: center;
   gap: 6px;
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .detail-item.badge {
@@ -248,18 +248,18 @@ const formatDate = (date: Date | string): string => {
 }
 
 .badge-onsite {
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-secondary);
 }
 
 .badge-type {
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-secondary);
 }
 
 .ma-job-card-description {
   font-size: 0.9375rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -294,15 +294,15 @@ const formatDate = (date: Date | string): string => {
 
 .skill-tag {
   padding: 6px 12px;
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-primary, #1f2937);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-main);
   border-radius: 6px;
   font-size: 0.8125rem;
   font-weight: 500;
 }
 
 .skill-more {
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .ma-job-card-footer {
@@ -311,7 +311,7 @@ const formatDate = (date: Date | string): string => {
   justify-content: space-between;
   gap: 16px;
   padding-top: 20px;
-  border-top: 1px solid var(--ma-border, #e5e7eb);
+  border-top: 1px solid var(--ma-border);
 }
 
 .posted-date {
@@ -319,7 +319,7 @@ const formatDate = (date: Date | string): string => {
   align-items: center;
   gap: 6px;
   font-size: 0.8125rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .apply-btn {
@@ -327,7 +327,7 @@ const formatDate = (date: Date | string): string => {
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   border: none;
   border-radius: 8px;

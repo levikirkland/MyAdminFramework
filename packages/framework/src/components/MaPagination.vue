@@ -191,7 +191,7 @@ const handleJump = (e: Event) => {
 
 .ma-pagination-total {
   margin-right: 8px;
-  color: var(--ma-text-secondary, #64748b);
+  color: var(--ma-text-secondary);
 }
 
 .ma-pagination-btn {
@@ -200,7 +200,7 @@ const handleJump = (e: Event) => {
   justify-content: center;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--ma-border, #e2e8f0);
+  border: 1px solid var(--ma-border);
   background-color: var(--ma-bg-main, #fff);
   border-radius: 4px;
   cursor: pointer;
@@ -209,8 +209,8 @@ const handleJump = (e: Event) => {
 }
 
 .ma-pagination-btn:hover:not(:disabled) {
-  border-color: var(--ma-primary, #0284c7);
-  color: var(--ma-primary, #0284c7);
+  border-color: var(--ma-primary);
+  color: var(--ma-primary);
 }
 
 .ma-pagination-btn:disabled {
@@ -231,7 +231,7 @@ const handleJump = (e: Event) => {
   min-width: 32px;
   height: 32px;
   padding: 0 6px;
-  border: 1px solid var(--ma-border, #e2e8f0);
+  border: 1px solid var(--ma-border);
   background-color: var(--ma-bg-main, #fff);
   border-radius: 4px;
   cursor: pointer;
@@ -241,13 +241,13 @@ const handleJump = (e: Event) => {
 }
 
 .ma-pagination-item:hover:not(:disabled):not(.is-ellipsis) {
-  border-color: var(--ma-primary, #0284c7);
-  color: var(--ma-primary, #0284c7);
+  border-color: var(--ma-primary);
+  color: var(--ma-primary);
 }
 
 .ma-pagination-item.is-active {
-  background-color: var(--ma-primary, #0284c7);
-  border-color: var(--ma-primary, #0284c7);
+  background-color: var(--ma-primary);
+  border-color: var(--ma-primary);
   color: #fff;
 }
 
@@ -255,7 +255,7 @@ const handleJump = (e: Event) => {
   border: none;
   background: transparent;
   cursor: default;
-  color: var(--ma-text-secondary, #94a3b8);
+  color: var(--ma-text-secondary);
 }
 
 /* Simple Mode */
@@ -271,18 +271,18 @@ const handleJump = (e: Event) => {
   height: 32px;
   padding: 0 4px;
   text-align: center;
-  border: 1px solid var(--ma-border, #e2e8f0);
+  border: 1px solid var(--ma-border);
   border-radius: 4px;
   outline: none;
   transition: border-color 0.2s;
 }
 
 .ma-pagination-simple-pager input:focus {
-  border-color: var(--ma-primary, #0284c7);
+  border-color: var(--ma-primary);
 }
 
 .ma-pagination-slash {
-  color: var(--ma-text-secondary, #94a3b8);
+  color: var(--ma-text-secondary);
 }
 
 /* Options & Jumper */
@@ -297,7 +297,7 @@ const handleJump = (e: Event) => {
 .ma-pagination-size-changer {
   height: 32px;
   padding: 0 8px;
-  border: 1px solid var(--ma-border, #e2e8f0);
+  border: 1px solid var(--ma-border);
   border-radius: 4px;
   background-color: var(--ma-bg-main, #fff);
   outline: none;
@@ -309,12 +309,12 @@ const handleJump = (e: Event) => {
   height: 32px;
   padding: 0 4px;
   text-align: center;
-  border: 1px solid var(--ma-border, #e2e8f0);
+  border: 1px solid var(--ma-border);
   border-radius: 4px;
   outline: none;
 }
 
 .ma-pagination-jumper input:focus {
-  border-color: var(--ma-primary, #0284c7);
+  border-color: var(--ma-primary);
 }
 </style>

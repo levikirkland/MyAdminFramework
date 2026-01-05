@@ -100,7 +100,7 @@ watch(() => props.src, () => {
   align-items: center;
   justify-content: center;
   background-color: var(--ma-bg-secondary, #e2e8f0);
-  color: var(--ma-text-secondary, #64748b);
+  color: var(--ma-text-secondary);
   overflow: hidden;
   vertical-align: middle;
   font-weight: 600;

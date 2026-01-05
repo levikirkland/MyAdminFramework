@@ -264,7 +264,7 @@ watch(isOpen, (val) => {
 }
 
 .ma-ai-message.assistant .ma-ai-avatar {
-  background-color: var(--ma-primary, #0052cc);
+  background-color: var(--ma-primary);
   color: white;
 }
 
@@ -280,7 +280,7 @@ watch(isOpen, (val) => {
 }
 
 .ma-ai-message.user .ma-ai-bubble {
-  background-color: var(--ma-primary, #0052cc);
+  background-color: var(--ma-primary);
   color: white;
   border-color: transparent;
   border-bottom-right-radius: 4px;
@@ -300,7 +300,7 @@ watch(isOpen, (val) => {
   width: 56px;
   height: 56px;
   border-radius: 28px;
-  background-color: var(--ma-primary, #0052cc);
+  background-color: var(--ma-primary);
   color: white;
   border: none;
   cursor: pointer;

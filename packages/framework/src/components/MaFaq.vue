@@ -79,12 +79,12 @@ const toggle = (index: number) => {
 }
 
 .ma-faq__item:hover {
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
 }
 
 .ma-faq__item--active {
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
 
@@ -103,23 +103,23 @@ const toggle = (index: number) => {
 }
 
 .ma-faq__question:hover {
-  background: var(--ma-bg-tertiary, #f9fafb);
+  background: var(--ma-bg-secondary);
 }
 
 .ma-faq__item--active .ma-faq__question {
-  background: var(--ma-primary-light, #eff6ff);
+  background: var(--ma-primary-light);
 }
 
 .ma-faq__question-text {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   line-height: 1.5;
 }
 
 .ma-faq__icon {
   flex-shrink: 0;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   transition: transform 0.3s ease;
 }
 
@@ -128,7 +128,7 @@ const toggle = (index: number) => {
 }
 
 .ma-faq__item--active .ma-faq__icon {
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 .ma-faq__answer-wrapper {
@@ -137,7 +137,7 @@ const toggle = (index: number) => {
 
 .ma-faq__answer {
   padding: 0 1.5rem 1.25rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   font-size: 0.9375rem;
   line-height: 1.7;
 }
@@ -157,7 +157,7 @@ const toggle = (index: number) => {
 }
 
 .ma-faq__answer :deep(a) {
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
   text-decoration: none;
 }
 
