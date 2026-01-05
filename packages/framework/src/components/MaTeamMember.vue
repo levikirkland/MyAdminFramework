@@ -171,11 +171,11 @@ const getSocialIcon = (platform: string) => {
 .ma-team-member:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
 }
 
 .ma-team-member--featured {
-  border: 2px solid var(--ma-primary, #3b82f6);
+  border: 2px solid var(--ma-primary);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
 }
 
@@ -184,7 +184,7 @@ const getSocialIcon = (platform: string) => {
   width: 100%;
   padding-top: 100%;
   overflow: hidden;
-  background: var(--ma-bg-tertiary, #f3f4f6);
+  background: var(--ma-bg-secondary);
 }
 
 .ma-team-member__image {
@@ -227,13 +227,13 @@ const getSocialIcon = (platform: string) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   transition: all 0.2s ease;
   text-decoration: none;
 }
 
 .ma-team-member__social-link:hover {
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   transform: translateY(-2px);
 }
@@ -278,14 +278,14 @@ const getSocialIcon = (platform: string) => {
 .ma-team-member__name {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   margin: 0;
 }
 
 .ma-team-member__role {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -293,7 +293,7 @@ const getSocialIcon = (platform: string) => {
 
 .ma-team-member__bio {
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   line-height: 1.6;
   margin: 0;
   display: -webkit-box;
@@ -310,8 +310,8 @@ const getSocialIcon = (platform: string) => {
 
 .ma-team-member__skill {
   padding: 0.25rem 0.625rem;
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-secondary);
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 500;
@@ -319,8 +319,8 @@ const getSocialIcon = (platform: string) => {
 
 .ma-team-member__skill-more {
   padding: 0.25rem 0.625rem;
-  background: var(--ma-primary-light, #dbeafe);
-  color: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary-light);
+  color: var(--ma-primary);
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -337,14 +337,14 @@ const getSocialIcon = (platform: string) => {
   display: flex;
   align-items: center;
   gap: 0.375rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   font-size: 0.8125rem;
 }
 
 .ma-team-member__contact-btn {
   margin-top: auto;
   padding: 0.625rem 1rem;
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   border: none;
   border-radius: 6px;
@@ -427,7 +427,7 @@ const getSocialIcon = (platform: string) => {
 }
 
 .ma-team-member--minimal:hover .ma-team-member__image-wrapper {
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
 }
 
 .ma-team-member--minimal .ma-team-member__image {
@@ -447,8 +447,8 @@ const getSocialIcon = (platform: string) => {
 }
 
 .ma-team-member--minimal .ma-team-member__social-link {
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-secondary);
 }
 
 /* Responsive */

@@ -533,7 +533,7 @@ watch(() => props.data, () => {
 .ma-table-wrapper {
   position: relative;
   width: 100%;
-  border: 1px solid var(--ma-border, #e2e8f0);
+  border: 1px solid var(--ma-border);
   border-radius: 8px;
   background: var(--ma-bg-card, #fff);
   display: flex;
@@ -556,10 +556,10 @@ watch(() => props.data, () => {
 
 .ma-table th {
   background-color: var(--ma-bg-secondary, #f8fafc);
-  color: var(--ma-text-secondary, #64748b);
+  color: var(--ma-text-secondary);
   font-weight: 600;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--ma-border, #e2e8f0);
+  border-bottom: 1px solid var(--ma-border);
   white-space: nowrap;
   position: relative;
 }
@@ -572,7 +572,7 @@ watch(() => props.data, () => {
 
 .ma-table td {
   padding: 12px 16px;
-  border-bottom: 1px solid var(--ma-border, #e2e8f0);
+  border-bottom: 1px solid var(--ma-border);
   color: var(--ma-text-main, #334155);
   transition: background-color 0.2s;
 }
@@ -590,7 +590,7 @@ watch(() => props.data, () => {
 }
 
 .ma-table tr.is-selected td {
-  background-color: var(--ma-primary-light, #e0f2fe);
+  background-color: var(--ma-primary-light);
 }
 
 /* Sizes */
@@ -613,7 +613,7 @@ watch(() => props.data, () => {
 }
 
 .ma-table th.is-sortable:hover {
-  background-color: var(--ma-border, #e2e8f0);
+  background-color: var(--ma-border);
 }
 
 .th-content {
@@ -671,12 +671,12 @@ watch(() => props.data, () => {
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border-top: 1px solid var(--ma-border, #e2e8f0);
+  border-top: 1px solid var(--ma-border);
   background-color: var(--ma-bg-card, #fff);
 }
 
 .pagination-info {
-  color: var(--ma-text-secondary, #64748b);
+  color: var(--ma-text-secondary);
   font-size: 0.875rem;
 }
 
@@ -704,7 +704,7 @@ watch(() => props.data, () => {
 }
 
 .filter-icon .is-active {
-  color: var(--ma-primary, #0284c7);
+  color: var(--ma-primary);
 }
 
 .th-filter-dropdown {
@@ -714,7 +714,7 @@ watch(() => props.data, () => {
   right: 0;
   background: var(--ma-bg-card, #ffffff);
   padding: 8px;
-  border: 1px solid var(--ma-border, #e2e8f0);
+  border: 1px solid var(--ma-border);
   border-radius: 0 0 6px 6px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   z-index: 10;
@@ -726,7 +726,7 @@ watch(() => props.data, () => {
   display: flex;
   align-items: center;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--ma-border, #e2e8f0);
+  border-bottom: 1px solid var(--ma-border);
   background-color: var(--ma-bg-card, #fff);
 }
 

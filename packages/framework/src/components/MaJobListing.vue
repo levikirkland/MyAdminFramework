@@ -175,7 +175,7 @@ const formatDate = (date: Date | string): string => {
 
 .ma-job-listing:hover {
   box-shadow: var(--ma-shadow-md, 0 4px 6px -1px rgb(0 0 0 / 0.1));
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
 }
 
 .ma-job-listing--featured {
@@ -248,7 +248,7 @@ const formatDate = (date: Date | string): string => {
   margin: 0 0 0.5rem 0;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -263,7 +263,7 @@ const formatDate = (date: Date | string): string => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   font-size: 0.95rem;
 }
 
@@ -272,7 +272,7 @@ const formatDate = (date: Date | string): string => {
   padding: 0.5rem;
   background: transparent;
   border: none;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   cursor: pointer;
   border-radius: var(--ma-border-radius, 8px);
   transition: all 0.2s ease;
@@ -280,11 +280,11 @@ const formatDate = (date: Date | string): string => {
 
 .ma-job-listing__bookmark:hover {
   background: var(--ma-bg-hover, #f3f4f6);
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 .ma-job-listing__bookmark--active {
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 .ma-job-listing__meta {
@@ -306,7 +306,7 @@ const formatDate = (date: Date | string): string => {
   display: flex;
   align-items: center;
   gap: 0.375rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .ma-job-listing__posted {
@@ -333,18 +333,18 @@ const formatDate = (date: Date | string): string => {
 }
 
 .ma-job-listing__badge--onsite {
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-secondary);
 }
 
 .ma-job-listing__badge--type {
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-secondary);
 }
 
 .ma-job-listing__description {
   margin: 0 0 1rem 0;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -365,15 +365,15 @@ const formatDate = (date: Date | string): string => {
 
 .ma-job-listing__skill-tag {
   padding: 0.375rem 0.75rem;
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-primary, #1f2937);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-main);
   border-radius: var(--ma-border-radius, 8px);
   font-size: 0.8125rem;
   font-weight: 500;
 }
 
 .ma-job-listing__skill-tag--more {
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .ma-job-listing__footer {
@@ -393,7 +393,7 @@ const formatDate = (date: Date | string): string => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   font-size: 0.875rem;
 }
 
@@ -402,7 +402,7 @@ const formatDate = (date: Date | string): string => {
   align-items: center;
   gap: 0.5rem;
   padding: 0.625rem 1.25rem;
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   border: none;
   border-radius: var(--ma-border-radius, 8px);

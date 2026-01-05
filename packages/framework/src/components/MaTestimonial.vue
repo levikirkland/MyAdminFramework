@@ -88,7 +88,7 @@ const formatDate = (date: Date | string): string => {
   padding: 1.5rem;
   background: var(--ma-bg-card, #fff);
   border-radius: var(--ma-border-radius, 12px);
-  border: 1px solid var(--ma-border, #e5e7eb);
+  border: 1px solid var(--ma-border);
   transition: all 0.3s ease;
 }
 
@@ -97,7 +97,7 @@ const formatDate = (date: Date | string): string => {
 }
 
 .ma-testimonial--featured {
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0) 100%);
 }
 
@@ -120,7 +120,7 @@ const formatDate = (date: Date | string): string => {
 .ma-testimonial__rating {
   display: flex;
   gap: 0.25rem;
-  color: var(--ma-text-secondary, #9ca3af);
+  color: var(--ma-text-secondary);
 }
 
 .ma-testimonial__rating svg.filled {
@@ -136,7 +136,7 @@ const formatDate = (date: Date | string): string => {
   position: absolute;
   top: -8px;
   left: -8px;
-  color: var(--ma-primary-light, #dbeafe);
+  color: var(--ma-primary-light);
   opacity: 0.5;
 }
 
@@ -144,7 +144,7 @@ const formatDate = (date: Date | string): string => {
   margin: 0;
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   font-style: italic;
 }
 
@@ -170,7 +170,7 @@ const formatDate = (date: Date | string): string => {
   height: 48px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--ma-border, #e5e7eb);
+  border: 2px solid var(--ma-border);
 }
 
 .ma-testimonial--compact .ma-testimonial__avatar {
@@ -193,8 +193,8 @@ const formatDate = (date: Date | string): string => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ma-primary-light, #dbeafe);
-  color: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary-light);
+  color: var(--ma-primary);
   font-weight: 600;
   font-size: 1rem;
 }
@@ -207,7 +207,7 @@ const formatDate = (date: Date | string): string => {
 .ma-testimonial__name {
   font-weight: 600;
   font-size: 1rem;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .ma-testimonial--compact .ma-testimonial__name {
@@ -216,12 +216,12 @@ const formatDate = (date: Date | string): string => {
 
 .ma-testimonial__role {
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .ma-testimonial__company {
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .ma-testimonial--compact .ma-testimonial__role,
@@ -247,9 +247,9 @@ const formatDate = (date: Date | string): string => {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.8125rem;
-  color: var(--ma-text-secondary, #9ca3af);
+  color: var(--ma-text-secondary);
   padding-top: 0.5rem;
-  border-top: 1px solid var(--ma-border, #e5e7eb);
+  border-top: 1px solid var(--ma-border);
 }
 
 /* Responsive */

@@ -204,7 +204,7 @@ onUnmounted(() => {
 }
 
 .ma-notification-item.is-unread {
-  background-color: var(--ma-primary-light, #f0f9ff);
+  background-color: var(--ma-primary-light);
 }
 
 .item-content {

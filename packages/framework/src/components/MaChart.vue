@@ -36,7 +36,7 @@ const defaultOptions = {
     toolbar: { show: false },
     fontFamily: 'inherit',
     background: 'transparent',
-    foreColor: 'var(--ma-text-secondary, #64748b)'
+    foreColor: 'var(--ma-text-secondary)'
   },
   colors: props.colors,
   stroke: {
@@ -52,19 +52,19 @@ const defaultOptions = {
     axisTicks: { show: false },
     labels: {
       style: {
-        colors: 'var(--ma-text-secondary, #64748b)'
+        colors: 'var(--ma-text-secondary)'
       }
     }
   },
   yaxis: {
     labels: {
       style: {
-        colors: 'var(--ma-text-secondary, #64748b)'
+        colors: 'var(--ma-text-secondary)'
       }
     }
   },
   grid: {
-    borderColor: 'var(--ma-border, #e2e8f0)',
+    borderColor: 'var(--ma-border)',
     strokeDashArray: 4,
     xaxis: {
       lines: {

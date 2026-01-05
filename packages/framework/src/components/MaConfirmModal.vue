@@ -109,7 +109,7 @@ const handleCancel = () => {
 .ma-confirm-icon.is-error { color: var(--ma-danger, #dc2626); }
 .ma-confirm-icon.is-success { color: var(--ma-success, #16a34a); }
 .ma-confirm-icon.is-info { color: var(--ma-info, #2563eb); }
-.ma-confirm-icon.is-confirm { color: var(--ma-primary, #0052cc); }
+.ma-confirm-icon.is-confirm { color: var(--ma-primary); }
 
 .ma-confirm-content {
   flex: 1;

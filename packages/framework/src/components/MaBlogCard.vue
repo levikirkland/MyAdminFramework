@@ -153,7 +153,7 @@ const toggleBookmark = () => {
   flex-direction: column;
   background: var(--ma-bg-card, #fff);
   border-radius: var(--ma-border-radius, 12px);
-  border: 1px solid var(--ma-border, #e5e7eb);
+  border: 1px solid var(--ma-border);
   overflow: hidden;
   transition: all 0.3s ease;
 }
@@ -174,7 +174,7 @@ const toggleBookmark = () => {
 
 .ma-blog-card--minimal {
   border: none;
-  border-bottom: 1px solid var(--ma-border, #e5e7eb);
+  border-bottom: 1px solid var(--ma-border);
   border-radius: 0;
   padding: 1rem 0;
 }
@@ -208,7 +208,7 @@ const toggleBookmark = () => {
   width: 100%;
   height: 200px;
   overflow: hidden;
-  background: var(--ma-bg-tertiary, #f3f4f6);
+  background: var(--ma-bg-secondary);
 }
 
 .ma-blog-card--compact .ma-blog-card__image {
@@ -237,7 +237,7 @@ const toggleBookmark = () => {
   bottom: 12px;
   left: 12px;
   padding: 6px 12px;
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   font-size: 0.75rem;
   font-weight: 600;
@@ -268,7 +268,7 @@ const toggleBookmark = () => {
   align-items: center;
   gap: 1rem;
   font-size: 0.8125rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .ma-blog-card__date,
@@ -283,7 +283,7 @@ const toggleBookmark = () => {
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.3;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .ma-blog-card--compact .ma-blog-card__title {
@@ -302,14 +302,14 @@ const toggleBookmark = () => {
 }
 
 .ma-blog-card__link:hover {
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 .ma-blog-card__excerpt {
   margin: 0;
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -332,8 +332,8 @@ const toggleBookmark = () => {
   align-items: center;
   gap: 0.25rem;
   padding: 0.375rem 0.75rem;
-  background: var(--ma-bg-tertiary, #f3f4f6);
-  color: var(--ma-text-secondary, #6b7280);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-secondary);
   border-radius: 6px;
   font-size: 0.8125rem;
   font-weight: 500;
@@ -341,7 +341,7 @@ const toggleBookmark = () => {
 
 .ma-blog-card__tag--more {
   background: transparent;
-  border: 1px dashed var(--ma-border, #e5e7eb);
+  border: 1px dashed var(--ma-border);
 }
 
 .ma-blog-card__author {
@@ -349,7 +349,7 @@ const toggleBookmark = () => {
   align-items: center;
   gap: 0.75rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--ma-border, #e5e7eb);
+  border-top: 1px solid var(--ma-border);
   margin-top: auto;
 }
 
@@ -364,7 +364,7 @@ const toggleBookmark = () => {
   height: 40px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--ma-border, #e5e7eb);
+  border: 2px solid var(--ma-border);
 }
 
 .ma-blog-card__author-avatar img {
@@ -377,8 +377,8 @@ const toggleBookmark = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--ma-primary-light, #dbeafe);
-  color: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary-light);
+  color: var(--ma-primary);
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -391,12 +391,12 @@ const toggleBookmark = () => {
 .ma-blog-card__author-name {
   font-weight: 600;
   font-size: 0.9375rem;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .ma-blog-card__author-role {
   font-size: 0.8125rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .ma-blog-card__bookmark {
@@ -404,7 +404,7 @@ const toggleBookmark = () => {
   padding: 0.5rem;
   background: transparent;
   border: none;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   cursor: pointer;
   border-radius: 6px;
   transition: all 0.2s ease;
@@ -412,7 +412,7 @@ const toggleBookmark = () => {
 
 .ma-blog-card__bookmark:hover {
   background: var(--ma-bg-hover, #f3f4f6);
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 /* Responsive */

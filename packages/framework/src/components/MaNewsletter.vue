@@ -110,11 +110,11 @@ const handleSubmit = async () => {
   width: 64px;
   height: 64px;
   border-radius: 12px;
-  background: var(--ma-primary-light, #eff6ff);
+  background: var(--ma-primary-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 .ma-newsletter__text {
@@ -126,13 +126,13 @@ const handleSubmit = async () => {
 .ma-newsletter__title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   margin: 0;
 }
 
 .ma-newsletter__description {
   font-size: 0.9375rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   line-height: 1.6;
   margin: 0;
 }
@@ -165,14 +165,14 @@ const handleSubmit = async () => {
   border: 1px solid var(--ma-border-color, #e5e7eb);
   border-radius: 8px;
   font-size: 0.9375rem;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   background: var(--ma-bg-secondary, #fff);
   transition: all 0.2s ease;
 }
 
 .ma-newsletter__input:focus {
   outline: none;
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
@@ -183,7 +183,7 @@ const handleSubmit = async () => {
 
 .ma-newsletter__submit {
   padding: 0.875rem 1.5rem;
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   border: none;
   border-radius: 8px;

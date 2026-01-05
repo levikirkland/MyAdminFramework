@@ -1,5 +1,5 @@
 <template>
-  <div class="ai-chat-screen">
+  <div class="ai-chat-screen" :class="{ 'fill-container': fillContainer }">
     <!-- Sidebar with chat sessions -->
     <div class="ai-chat-sidebar" :class="{ 'collapsed': sidebarCollapsed }">
       <div class="sidebar-header">
@@ -271,9 +271,9 @@
         <MaFormGroup label="API Endpoint">
           <MaInput 
             v-model="settings.endpoint" 
-            placeholder="http://localhost:11434/api/chat"
+            placeholder="http://127.0.0.1:9000/v1/chat/completions"
           />
-          <small>Ollama or compatible API endpoint</small>
+          <small>Local inference API endpoint</small>
         </MaFormGroup>
       </div>
 
@@ -289,9 +289,27 @@
 
 <script setup lang="ts">
 import { ref, computed, nextTick, watch, onMounted } from 'vue'
-import { MaButton, MaIcon, MaSelect, MaModal, MaFormGroup, MaInput, MaAvatar } from 'my-admin-framework'
+import MaButton from './MaButton.vue'
+import MaIcon from './MaIcon.vue'
+import MaSelect from './MaSelect.vue'
+import MaModal from './MaModal.vue'
+import MaFormGroup from './MaFormGroup.vue'
+import MaInput from './MaInput.vue'
+import MaAvatar from './MaAvatar.vue'
 import { marked } from 'marked'
 import DOMPurify from 'dompurify'
+
+type RequestHeaders = Record<string, string>
+
+const props = defineProps<{
+  endpoint?: string
+  model?: string
+  systemPrompt?: string
+  temperature?: number
+  maxTokens?: number
+  headers?: RequestHeaders
+  fillContainer?: boolean
+}>()
 
 interface Message {
   role: 'user' | 'assistant' | 'system'
@@ -324,7 +342,10 @@ const showSettings = ref(false)
 const messagesContainer = ref<HTMLElement>()
 const messageInput = ref<HTMLTextAreaElement>()
 
-const selectedModel = ref('llama3.2')
+// Computed from props
+const fillContainer = computed(() => props.fillContainer ?? true)
+
+const selectedModel = ref(props.model ?? 'llama3.2')
 const modelOptions = [
   { label: 'Llama 3.2', value: 'llama3.2' },
   { label: 'Llama 3.1', value: 'llama3.1' },
@@ -335,10 +356,10 @@ const modelOptions = [
 ]
 
 const settings = ref<Settings>({
-  temperature: 0.7,
-  maxTokens: 4096,
-  systemPrompt: 'You are a helpful AI assistant.',
-  endpoint: 'http://localhost:11434/api/chat'
+  temperature: props.temperature ?? 0.7,
+  maxTokens: props.maxTokens ?? 4096,
+  systemPrompt: props.systemPrompt ?? 'You are a helpful AI assistant.',
+  endpoint: props.endpoint ?? 'http://127.0.0.1:9000/v1/chat/completions'
 })
 
 const suggestions = [
@@ -448,7 +469,7 @@ const sendMessage = async () => {
   // Send to API
   isTyping.value = true
   try {
-    const response = await sendToAPI(message)
+    const response = await sendToAPI()
     const assistantMessage: Message = {
       role: 'assistant',
       content: response,
@@ -474,33 +495,43 @@ const sendSuggestion = (suggestion: string) => {
   sendMessage()
 }
 
-const sendToAPI = async (message: string): Promise<string> => {
-  // Mock API call - replace with actual Ollama API integration
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(`This is a mock response to: "${message}"\n\nIn a real implementation, this would call the Ollama API at ${settings.value.endpoint} with model ${selectedModel.value}.`)
-    }, 1500)
+const sendToAPI = async (): Promise<string> => {
+  if (!currentSession.value) throw new Error('No active chat session')
+
+  const payload = {
+    model: selectedModel.value,
+    messages: [
+      { role: 'system', content: settings.value.systemPrompt },
+      ...currentSession.value.messages.map(m => ({ role: m.role, content: m.content }))
+    ],
+    temperature: settings.value.temperature,
+    max_tokens: settings.value.maxTokens,
+    stream: false
+  }
+
+  const response = await fetch(settings.value.endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(props.headers ?? {})
+    },
+    body: JSON.stringify(payload)
   })
 
-  // Real implementation:
-  // const response = await fetch(settings.value.endpoint, {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({
-  //     model: selectedModel.value,
-  //     messages: [
-  //       { role: 'system', content: settings.value.systemPrompt },
-  //       ...currentSession.value!.messages.map(m => ({ role: m.role, content: m.content }))
-  //     ],
-  //     stream: false,
-  //     options: {
-  //       temperature: settings.value.temperature,
-  //       num_predict: settings.value.maxTokens
-  //     }
-  //   })
-  // })
-  // const data = await response.json()
-  // return data.message.content
+  const data = await response.json().catch(() => ({}))
+  if (!response.ok) {
+    const msg = data?.error?.message || data?.message || `HTTP ${response.status}`
+    throw new Error(msg)
+  }
+
+  const content =
+    data?.choices?.[0]?.message?.content ??
+    data?.message?.content ??
+    data?.response ??
+    data?.output_text
+
+  if (typeof content === 'string' && content.length) return content
+  return typeof data === 'string' ? data : JSON.stringify(data, null, 2)
 }
 
 const regenerateResponse = async (index: number) => {
@@ -513,7 +544,7 @@ const regenerateResponse = async (index: number) => {
   
   isTyping.value = true
   try {
-    const response = await sendToAPI(userMessage.content)
+    const response = await sendToAPI()
     const assistantMessage: Message = {
       role: 'assistant',
       content: response,
@@ -580,8 +611,15 @@ watch(inputMessage, () => {
 onMounted(() => {
   const savedSettings = localStorage.getItem('ai-chat-settings')
   if (savedSettings) {
-    settings.value = JSON.parse(savedSettings)
+    settings.value = { ...settings.value, ...JSON.parse(savedSettings) }
   }
+
+  // Props override persisted settings
+  if (props.endpoint) settings.value.endpoint = props.endpoint
+  if (typeof props.temperature === 'number') settings.value.temperature = props.temperature
+  if (typeof props.maxTokens === 'number') settings.value.maxTokens = props.maxTokens
+  if (props.systemPrompt) settings.value.systemPrompt = props.systemPrompt
+  if (props.model) selectedModel.value = props.model
 
   const savedSessions = localStorage.getItem('ai-chat-sessions')
   if (savedSessions) {
@@ -603,17 +641,25 @@ watch(sessions, (newSessions) => {
 <style scoped>
 .ai-chat-screen {
   display: flex;
-  height: calc(100vh - 120px);
-  background: var(--ma-bg-color, #f5f5f5);
+  height: 100%;
+  min-height: 0;
+  background: var(--ma-bg-page);
   border-radius: 8px;
   overflow: hidden;
+}
+
+.ai-chat-screen.fill-container {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  border-radius: 0;
 }
 
 /* Sidebar */
 .ai-chat-sidebar {
   width: 280px;
-  background: var(--ma-card-bg, #ffffff);
-  border-right: 1px solid var(--ma-border-color, #e0e0e0);
+  background: var(--ma-bg-card);
+  border-right: 1px solid var(--ma-border);
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
@@ -625,7 +671,7 @@ watch(sessions, (newSessions) => {
 
 .sidebar-header {
   padding: 16px;
-  border-bottom: 1px solid var(--ma-border-color, #e0e0e0);
+  border-bottom: 1px solid var(--ma-border);
   display: flex;
   gap: 8px;
   align-items: center;
@@ -648,7 +694,7 @@ watch(sessions, (newSessions) => {
 .group-label {
   font-size: 12px;
   font-weight: 600;
-  color: var(--ma-text-secondary, #666);
+  color: var(--ma-text-secondary);
   padding: 0 8px;
   margin-bottom: 8px;
   text-transform: uppercase;
@@ -664,15 +710,16 @@ watch(sessions, (newSessions) => {
   cursor: pointer;
   transition: background 0.2s;
   position: relative;
+  color: var(--ma-text-main);
 }
 
 .session-item:hover {
-  background: var(--ma-hover-bg, #f5f5f5);
+  background: var(--ma-bg-secondary);
 }
 
 .session-item.active {
-  background: var(--ma-primary-light, #e3f2fd);
-  color: var(--ma-primary, #1976d2);
+  background: var(--ma-primary-light);
+  color: var(--ma-primary);
 }
 
 .session-title {
@@ -697,12 +744,12 @@ watch(sessions, (newSessions) => {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: var(--ma-card-bg, #ffffff);
+  background: var(--ma-bg-card);
 }
 
 .chat-header {
   padding: 16px 24px;
-  border-bottom: 1px solid var(--ma-border-color, #e0e0e0);
+  border-bottom: 1px solid var(--ma-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -737,7 +784,7 @@ watch(sessions, (newSessions) => {
   justify-content: center;
   height: 100%;
   text-align: center;
-  color: var(--ma-text-secondary, #666);
+  color: var(--ma-text-secondary);
 }
 
 .empty-icon {
@@ -749,7 +796,7 @@ watch(sessions, (newSessions) => {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 8px;
-  color: var(--ma-text-primary, #333);
+  color: var(--ma-text-main);
 }
 
 .empty-state p {
@@ -767,18 +814,19 @@ watch(sessions, (newSessions) => {
 
 .suggestion-chip {
   padding: 8px 16px;
-  background: var(--ma-bg-secondary, #f5f5f5);
-  border: 1px solid var(--ma-border-color, #e0e0e0);
+  background: var(--ma-bg-secondary);
+  border: 1px solid var(--ma-border);
   border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s;
+  color: var(--ma-text-main);
 }
 
 .suggestion-chip:hover {
-  background: var(--ma-primary-light, #e3f2fd);
-  border-color: var(--ma-primary, #1976d2);
-  color: var(--ma-primary, #1976d2);
+  background: var(--ma-primary-light);
+  border-color: var(--ma-primary);
+  color: var(--ma-primary);
 }
 
 .messages-list {
@@ -815,7 +863,7 @@ watch(sessions, (newSessions) => {
 }
 
 .user-avatar {
-  background: var(--ma-primary, #1976d2);
+  background: var(--ma-primary);
   color: white;
 }
 
@@ -834,31 +882,31 @@ watch(sessions, (newSessions) => {
 .message-role {
   font-weight: 600;
   font-size: 13px;
-  color: var(--ma-text-primary, #333);
+  color: var(--ma-text-main);
 }
 
 .message-time {
   font-size: 12px;
-  color: var(--ma-text-secondary, #999);
+  color: var(--ma-text-secondary);
 }
 
 .message-text {
-  background: var(--ma-bg-secondary, #f5f5f5);
+  background: var(--ma-bg-secondary);
   padding: 12px 16px;
   border-radius: 12px;
   font-size: 14px;
   line-height: 1.6;
-  color: var(--ma-text-primary, #333);
+  color: var(--ma-text-main);
   word-wrap: break-word;
 }
 
 .message-wrapper.user .message-text {
-  background: var(--ma-primary, #1976d2);
+  background: var(--ma-primary);
   color: white;
 }
 
 .message-text :deep(pre) {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.1);
   padding: 12px;
   border-radius: 6px;
   overflow-x: auto;
@@ -895,7 +943,7 @@ watch(sessions, (newSessions) => {
   display: flex;
   gap: 4px;
   padding: 12px 16px;
-  background: var(--ma-bg-secondary, #f5f5f5);
+  background: var(--ma-bg-secondary);
   border-radius: 12px;
   width: fit-content;
 }
@@ -903,7 +951,7 @@ watch(sessions, (newSessions) => {
 .typing-indicator span {
   width: 8px;
   height: 8px;
-  background: var(--ma-text-secondary, #999);
+  background: var(--ma-text-secondary);
   border-radius: 50%;
   animation: typing 1.4s infinite;
 }
@@ -927,17 +975,17 @@ watch(sessions, (newSessions) => {
 
 /* Input area */
 .chat-input-area {
-  border-top: 1px solid var(--ma-border-color, #e0e0e0);
+  border-top: 1px solid var(--ma-border);
   padding: 16px 24px;
-  background: var(--ma-card-bg, #ffffff);
+  background: var(--ma-bg-card);
 }
 
 .input-wrapper {
   display: flex;
   gap: 8px;
   align-items: flex-end;
-  background: var(--ma-bg-secondary, #f5f5f5);
-  border: 1px solid var(--ma-border-color, #e0e0e0);
+  background: var(--ma-bg-secondary);
+  border: 1px solid var(--ma-border);
   border-radius: 12px;
   padding: 12px;
 }
@@ -953,11 +1001,11 @@ watch(sessions, (newSessions) => {
   max-height: 200px;
   overflow-y: auto;
   outline: none;
-  color: var(--ma-text-primary, #333);
+  color: var(--ma-text-main);
 }
 
 .message-input::placeholder {
-  color: var(--ma-text-secondary, #999);
+  color: var(--ma-text-muted);
 }
 
 .input-actions {
@@ -968,7 +1016,7 @@ watch(sessions, (newSessions) => {
 .input-footer {
   margin-top: 8px;
   text-align: center;
-  color: var(--ma-text-secondary, #999);
+  color: var(--ma-text-secondary);
 }
 
 /* Settings */
@@ -991,7 +1039,7 @@ watch(sessions, (newSessions) => {
   outline: none;
   appearance: none;
   -webkit-appearance: none;
-  background: var(--ma-border-color, #e0e0e0);
+  background: var(--ma-border);
 }
 
 .temperature-slider::-webkit-slider-thumb {
@@ -999,7 +1047,7 @@ watch(sessions, (newSessions) => {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--ma-primary, #1976d2);
+  background: var(--ma-primary);
   cursor: pointer;
 }
 
@@ -1007,21 +1055,24 @@ watch(sessions, (newSessions) => {
   font-weight: 600;
   min-width: 30px;
   text-align: right;
+  color: var(--ma-text-main);
 }
 
 .system-prompt-input {
   width: 100%;
   padding: 8px 12px;
-  border: 1px solid var(--ma-border-color, #e0e0e0);
+  border: 1px solid var(--ma-border);
   border-radius: 6px;
   font-family: inherit;
   font-size: 14px;
   resize: vertical;
   outline: none;
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-main);
 }
 
 .system-prompt-input:focus {
-  border-color: var(--ma-primary, #1976d2);
+  border-color: var(--ma-primary);
 }
 
 /* Responsive */

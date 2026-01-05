@@ -535,12 +535,12 @@ const minimalArticles = [
   font-size: 2.5rem;
   font-weight: 700;
   margin: 0 0 1rem 0;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .page-hero p {
   font-size: 1.125rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .showcase-section {
@@ -553,7 +553,7 @@ const minimalArticles = [
 
 .section-description {
   margin: 0 0 2rem 0;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
 }
 
 .featured-grid {
@@ -617,7 +617,7 @@ const minimalArticles = [
   background: var(--ma-bg-secondary, #fff);
   border: 1px solid var(--ma-border-color, #e5e7eb);
   border-radius: var(--ma-border-radius, 8px);
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -625,12 +625,12 @@ const minimalArticles = [
 
 .show-code-btn:hover {
   background: var(--ma-bg-hover, #f3f4f6);
-  border-color: var(--ma-primary, #3b82f6);
+  border-color: var(--ma-primary);
 }
 
 .code-block {
   margin-top: 1rem;
-  background: var(--ma-bg-tertiary, #f9fafb);
+  background: var(--ma-bg-secondary);
   border: 1px solid var(--ma-border-color, #e5e7eb);
   border-radius: var(--ma-border-radius, 8px);
   overflow: hidden;
@@ -654,7 +654,7 @@ const minimalArticles = [
   font-family: 'Courier New', monospace;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .props-docs {
@@ -668,7 +668,7 @@ const minimalArticles = [
 .props-docs h3 {
   margin: 2rem 0 1rem 0;
   font-size: 1.125rem;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
 }
 
 .props-docs h3:first-of-type {
@@ -695,17 +695,17 @@ const minimalArticles = [
 
 .props-table th {
   font-weight: 600;
-  background: var(--ma-bg-tertiary, #f9fafb);
-  color: var(--ma-text-primary, #1f2937);
+  background: var(--ma-bg-secondary);
+  color: var(--ma-text-main);
 }
 
 .props-table code {
   padding: 0.125rem 0.375rem;
-  background: var(--ma-bg-tertiary, #f3f4f6);
+  background: var(--ma-bg-secondary);
   border-radius: 0.25rem;
   font-family: 'Courier New', monospace;
   font-size: 0.8125rem;
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 @media (max-width: 768px) {

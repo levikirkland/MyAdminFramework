@@ -196,7 +196,7 @@ const updateRangeEnd = (event: Event) => {
   padding: 8px 12px;
   padding-right: 36px; /* Space for icon */
   font-size: 0.875rem;
-  border: 1px solid var(--ma-border, #e2e8f0);
+  border: 1px solid var(--ma-border);
   border-radius: 6px;
   background-color: var(--ma-bg-card, #ffffff);
   color: var(--ma-text-main, #334155);
@@ -231,8 +231,8 @@ const updateRangeEnd = (event: Event) => {
 
 .ma-datepicker:focus {
   outline: none;
-  border-color: var(--ma-primary, #0284c7);
-  box-shadow: 0 0 0 3px var(--ma-primary-light, #e0f2fe);
+  border-color: var(--ma-primary);
+  box-shadow: 0 0 0 3px var(--ma-primary-light);
 }
 
 .is-disabled .ma-datepicker {

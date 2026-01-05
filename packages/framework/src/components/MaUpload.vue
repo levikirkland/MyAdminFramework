@@ -131,7 +131,7 @@ const formatSize = (bytes: number) => {
 }
 
 .ma-upload-dropzone {
-  border: 2px dashed var(--ma-border, #e2e8f0);
+  border: 2px dashed var(--ma-border);
   border-radius: 8px;
   padding: 32px;
   text-align: center;
@@ -141,13 +141,13 @@ const formatSize = (bytes: number) => {
 }
 
 .ma-upload-dropzone:hover {
-  border-color: var(--ma-primary, #0284c7);
+  border-color: var(--ma-primary);
   background-color: var(--ma-bg-secondary, #f8fafc);
 }
 
 .ma-upload-dropzone.is-dragover {
-  border-color: var(--ma-primary, #0284c7);
-  background-color: var(--ma-primary-light, #e0f2fe);
+  border-color: var(--ma-primary);
+  background-color: var(--ma-primary-light);
 }
 
 .ma-upload-dropzone.is-disabled {
@@ -178,7 +178,7 @@ const formatSize = (bytes: number) => {
 }
 
 .upload-highlight {
-  color: var(--ma-primary, #0284c7);
+  color: var(--ma-primary);
   font-weight: 500;
 }
 

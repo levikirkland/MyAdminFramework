@@ -173,13 +173,13 @@ const getSocialIcon = (platform: string) => {
 .ma-footer__brand-name {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   margin: 0;
 }
 
 .ma-footer__brand-description {
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   line-height: 1.6;
   margin: 0;
 }
@@ -194,17 +194,17 @@ const getSocialIcon = (platform: string) => {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  background: var(--ma-bg-tertiary, #f3f4f6);
+  background: var(--ma-bg-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   transition: all 0.2s ease;
   text-decoration: none;
 }
 
 .ma-footer__social-link:hover {
-  background: var(--ma-primary, #3b82f6);
+  background: var(--ma-primary);
   color: white;
   transform: translateY(-2px);
 }
@@ -218,7 +218,7 @@ const getSocialIcon = (platform: string) => {
 .ma-footer__section-title {
   font-size: 0.875rem;
   font-weight: 700;
-  color: var(--ma-text-primary, #1f2937);
+  color: var(--ma-text-main);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0 0 1rem 0;
@@ -235,7 +235,7 @@ const getSocialIcon = (platform: string) => {
 
 .ma-footer__link {
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
   display: flex;
@@ -244,7 +244,7 @@ const getSocialIcon = (platform: string) => {
 }
 
 .ma-footer__link:hover {
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 .ma-footer__external-icon {
@@ -253,7 +253,7 @@ const getSocialIcon = (platform: string) => {
 
 .ma-footer__bottom {
   border-top: 1px solid var(--ma-border-color, #e5e7eb);
-  background: var(--ma-bg-tertiary, #f9fafb);
+  background: var(--ma-bg-secondary);
 }
 
 .ma-footer__bottom-container {
@@ -268,7 +268,7 @@ const getSocialIcon = (platform: string) => {
 
 .ma-footer__copyright {
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   margin: 0;
 }
 
@@ -279,13 +279,13 @@ const getSocialIcon = (platform: string) => {
 
 .ma-footer__bottom-link {
   font-size: 0.875rem;
-  color: var(--ma-text-secondary, #6b7280);
+  color: var(--ma-text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .ma-footer__bottom-link:hover {
-  color: var(--ma-primary, #3b82f6);
+  color: var(--ma-primary);
 }
 
 /* Compact Variant */

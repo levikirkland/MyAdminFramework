@@ -2,12 +2,12 @@ import { test, expect } from '@playwright/test'
 
 test.describe('MaAiChat', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:5173/login')
+    await page.goto('/login')
     await page.getByPlaceholder('name@company.com').fill('test@example.com')
     await page.getByPlaceholder('••••••••').fill('password')
     await page.getByRole('button', { name: 'Sign In' }).click()
     await page.waitForURL('/')
-    await page.goto('http://localhost:5173/ai-chat')
+    await page.goto('/ai-chat')
     await page.waitForLoadState('networkidle')
   })
 
@@ -18,9 +18,10 @@ test.describe('MaAiChat', () => {
   })
 
   test('should create new chat session', async ({ page }) => {
+    const initialCount = await page.locator('.session-item').count()
     await page.click('button:has-text("New Chat")')
     const sessions = page.locator('.session-item')
-    await expect(sessions).toHaveCount(1)
+    await expect(sessions).toHaveCount(initialCount + 1)
   })
 
   test('should send message and display in chat', async ({ page }) => {
@@ -45,10 +46,12 @@ test.describe('MaAiChat', () => {
   })
 
   test('should open settings modal', async ({ page }) => {
-    await page.click('button:has-text("Settings")')
-    await expect(page.locator('text=Chat Settings')).toBeVisible()
+    // Settings button is an icon-only button in the header
+    const settingsBtn = page.locator('.header-actions button').first()
+    await settingsBtn.click()
+    await expect(page.locator('.ma-modal')).toBeVisible()
     await page.click('button:has-text("Cancel")')
-    await expect(page.locator('text=Chat Settings')).not.toBeVisible()
+    await expect(page.locator('.ma-modal')).not.toBeVisible()
   })
 
   test('should use suggestion chip to send message', async ({ page }) => {
