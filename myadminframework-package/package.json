@@ -1,0 +1,28 @@
+{
+  "name": "myadminframework",
+  "version": "0.0.4",
+  "description": "This project contains a custom Vue.js framework and an Admin Template built with it.",
+  "keywords": [
+    "Vue3",
+    "Admin",
+    "Admin",
+    "Framework",
+    "AiChat",
+    "Template"
+  ],
+  "homepage": "https://github.com/levikirkland/MyAdminFramework#readme",
+  "bugs": {
+    "url": "https://github.com/levikirkland/MyAdminFramework/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levikirkland/MyAdminFramework.git"
+  },
+  "license": "GPL-3.0-only",
+  "author": "Levi Kirkland",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
