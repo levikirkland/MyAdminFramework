@@ -2,7 +2,7 @@
   "name": "my-admin-framework",
   "version": "0.0.4",
   "description": "A comprehensive Vue 3 admin framework with 100+ customizable components including charts, forms, layouts, and AI chat interface",
-  "author": "Andy",
+  "author": "Levi Kirkland",
   "license": "MIT",
   "keywords": [
     "vue",
@@ -18,7 +18,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/MyAdminFramework.git"
+    "url": "https://github.com/levikirkland/MyAdminFramework.git"
   },
   "type": "module",
   "files": [
