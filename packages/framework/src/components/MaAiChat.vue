@@ -1,29 +1,27 @@
 <template>
   <div class="ai-chat-screen" :class="{ 'fill-container': fillContainer }">
     <!-- Sidebar with chat sessions -->
-    <div v-if="showSidebar" class="ai-chat-sidebar" :class="{ 'collapsed': sidebarCollapsed }">
-      <slot name="sidebar-header">
-        <div class="sidebar-header">
-          <MaButton 
-            v-if="!sidebarCollapsed"
-            variant="solid" 
-            color="primary" 
-            @click="createNewChat"
-            class="new-chat-btn"
-          >
-            <MaIcon name="Plus" size="16" />
-            <span style="margin-left: 8px;">New Chat</span>
-          </MaButton>
-          <MaButton 
-            variant="ghost" 
-            size="small"
-            @click="toggleSidebar"
-            class="toggle-sidebar-btn"
-          >
-            <MaIcon :name="sidebarCollapsed ? 'ChevronRight' : 'ChevronLeft'" size="16" />
-          </MaButton>
-        </div>
-      </slot>
+    <div class="ai-chat-sidebar" :class="{ 'collapsed': sidebarCollapsed }">
+      <div class="sidebar-header">
+        <MaButton 
+          v-if="!sidebarCollapsed"
+          variant="solid" 
+          color="primary" 
+          @click="createNewChat"
+          class="new-chat-btn"
+        >
+          <MaIcon name="Plus" size="16" />
+          <span style="margin-left: 8px;">New Chat</span>
+        </MaButton>
+        <MaButton 
+          variant="ghost" 
+          size="small"
+          @click="toggleSidebar"
+          class="toggle-sidebar-btn"
+        >
+          <MaIcon :name="sidebarCollapsed ? 'ChevronRight' : 'ChevronLeft'" size="16" />
+        </MaButton>
+      </div>
 
       <div v-if="!sidebarCollapsed" class="chat-sessions">
         <div class="sessions-group">
@@ -97,47 +95,39 @@
     <!-- Main chat area -->
     <div class="ai-chat-main">
       <!-- Header with model selector -->
-      <slot name="header">
-        <div class="chat-header">
-          <div class="model-selector">
-            <MaIcon name="Brain" size="20" />
-            <MaSelect 
-              v-model="selectedModel" 
-              :options="modelOptions"
-              placeholder="Select Model"
-              class="model-dropdown"
-            />
-          </div>
-          <div class="header-actions">
-            <slot name="header-actions">
-              <MaButton variant="ghost" size="small" @click="showSettings = true">
-                <MaIcon name="Settings" size="18" />
-              </MaButton>
-            </slot>
-          </div>
+      <div class="chat-header">
+        <div class="model-selector">
+          <MaIcon name="Brain" size="20" />
+          <MaSelect 
+            v-model="selectedModel" 
+            :options="modelOptions"
+            placeholder="Select Model"
+            class="model-dropdown"
+          />
         </div>
-      </slot>
+        <div class="header-actions">
+          <MaButton variant="ghost" size="small" @click="showSettings = true">
+            <MaIcon name="Settings" size="18" />
+          </MaButton>
+        </div>
+      </div>
 
       <!-- Messages area -->
       <div class="chat-messages" ref="messagesContainer">
         <div v-if="!currentSession?.messages.length" class="empty-state">
-          <slot name="empty">
-            <MaIcon name="Sparkles" size="64" class="empty-icon" />
-            <h2>{{ emptyTitle }}</h2>
-            <p>{{ emptySubtitle }}</p>
-            <div v-if="suggestions.length" class="suggestion-chips">
-              <slot name="suggestions">
-                <div 
-                  v-for="suggestion in suggestions" 
-                  :key="suggestion"
-                  class="suggestion-chip"
-                  @click="sendSuggestion(suggestion)"
-                >
-                  {{ suggestion }}
-                </div>
-              </slot>
+          <MaIcon name="Sparkles" size="64" class="empty-icon" />
+          <h2>Start a conversation</h2>
+          <p>Ask me anything - I'm here to help!</p>
+          <div class="suggestion-chips">
+            <div 
+              v-for="suggestion in suggestions" 
+              :key="suggestion"
+              class="suggestion-chip"
+              @click="sendSuggestion(suggestion)"
+            >
+              {{ suggestion }}
             </div>
-          </slot>
+          </div>
         </div>
 
         <div v-else class="messages-list">
@@ -166,7 +156,7 @@
               </div>
               <div class="message-body">
                 <div class="message-header">
-                  <span class="message-role">{{ msg.role === 'assistant' ? assistantLabel : userLabel }}</span>
+                  <span class="message-role">{{ msg.role === 'assistant' ? 'AI Assistant' : 'You' }}</span>
                   <span class="message-time">{{ formatTime(msg.timestamp) }}</span>
                 </div>
                 <div class="message-text" v-html="renderMarkdown(msg.content)"></div>
@@ -191,7 +181,7 @@
               </div>
               <div class="message-body">
                 <div class="message-header">
-                  <span class="message-role">{{ assistantLabel }}</span>
+                  <span class="message-role">AI Assistant</span>
                 </div>
                 <div class="typing-indicator">
                   <span></span>
@@ -211,14 +201,13 @@
             v-model="inputMessage"
             @keydown.enter.exact.prevent="sendMessage"
             @keydown.enter.shift.exact="inputMessage += '\n'"
-            :placeholder="placeholder"
+            placeholder="Type your message... (Shift+Enter for new line)"
             class="message-input"
             rows="1"
             ref="messageInput"
           ></textarea>
           <div class="input-actions">
             <MaButton 
-              v-if="showAttachButton"
               variant="ghost" 
               size="small"
               @click="attachFile"
@@ -311,14 +300,8 @@ import { marked } from 'marked'
 import DOMPurify from 'dompurify'
 
 type RequestHeaders = Record<string, string>
-type ModelOption = { label: string; value: string }
 
-interface ModelsConfig {
-  endpoint?: string  // Where to fetch models from
-  headers?: RequestHeaders
-}
-
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   endpoint?: string
   model?: string
   systemPrompt?: string
@@ -326,34 +309,6 @@ const props = withDefaults(defineProps<{
   maxTokens?: number
   headers?: RequestHeaders
   fillContainer?: boolean
-  models?: ModelOption[]  // Provide custom models directly
-  modelsConfig?: ModelsConfig  // Config for fetching models from API
-  // Customization props
-  emptyTitle?: string
-  emptySubtitle?: string
-  userLabel?: string
-  assistantLabel?: string
-  placeholder?: string
-  suggestions?: string[]
-  // Feature flags
-  showSidebar?: boolean
-  showAttachButton?: boolean
-}>(), {
-  emptyTitle: 'Start a conversation',
-  emptySubtitle: 'Ask me anything - I\'m here to help!',
-  userLabel: 'You',
-  assistantLabel: 'AI Assistant',
-  placeholder: 'Type your message... (Shift+Enter for new line)',
-  suggestions: () => [],
-  showSidebar: true,
-  showAttachButton: true
-})
-
-const emit = defineEmits<{
-  (e: 'send', message: string): void
-  (e: 'receive', response: string): void
-  (e: 'error', error: Error): void
-  (e: 'session-change', sessionId: string): void
 }>()
 
 interface Message {
@@ -391,10 +346,14 @@ const messageInput = ref<HTMLTextAreaElement>()
 const fillContainer = computed(() => props.fillContainer ?? true)
 
 const selectedModel = ref(props.model ?? 'llama3.2')
-
-// Models - use prop or empty array (consumer should provide via models or modelsConfig)
-const modelOptions = ref<ModelOption[]>(props.models ?? [])
-const modelsLoading = ref(false)
+const modelOptions = [
+  { label: 'Llama 3.2', value: 'llama3.2' },
+  { label: 'Llama 3.1', value: 'llama3.1' },
+  { label: 'Mistral', value: 'mistral' },
+  { label: 'Codellama', value: 'codellama' },
+  { label: 'Phi-3', value: 'phi3' },
+  { label: 'Gemma 2', value: 'gemma2' },
+]
 
 const settings = ref<Settings>({
   temperature: props.temperature ?? 0.7,
@@ -403,7 +362,12 @@ const settings = ref<Settings>({
   endpoint: props.endpoint ?? 'http://127.0.0.1:9000/v1/chat/completions'
 })
 
-// Suggestions now come from props.suggestions
+const suggestions = [
+  'Explain quantum computing',
+  'Write a Python function to sort a list',
+  'What are the benefits of Vue.js?',
+  'Help me debug my code'
+]
 
 // Computed
 const currentSession = computed(() => 
@@ -463,7 +427,6 @@ const createNewChat = () => {
 
 const switchSession = (sessionId: string) => {
   activeSessionId.value = sessionId
-  emit('session-change', sessionId)
 }
 
 const deleteSession = (sessionId: string) => {
@@ -483,9 +446,6 @@ const sendMessage = async () => {
   if (!currentSession.value) {
     createNewChat()
   }
-
-  // Emit send event
-  emit('send', message)
 
   // Add user message
   const userMessage: Message = {
@@ -516,10 +476,7 @@ const sendMessage = async () => {
       timestamp: new Date()
     }
     currentSession.value!.messages.push(assistantMessage)
-    emit('receive', response)
   } catch (error) {
-    const err = error instanceof Error ? error : new Error(String(error))
-    emit('error', err)
     const errorMessage: Message = {
       role: 'assistant',
       content: 'Sorry, I encountered an error. Please check your API endpoint and try again.',
@@ -607,8 +564,8 @@ const copyMessage = (content: string) => {
 }
 
 const attachFile = () => {
-  // Placeholder - consumers can implement via slot or by extending
-  console.log('File attachment not implemented')
+  // Implement file attachment logic
+  alert('File attachment coming soon!')
 }
 
 const renderMarkdown = (content: string): string => {
@@ -642,45 +599,6 @@ const saveSettings = () => {
   localStorage.setItem('ai-chat-settings', JSON.stringify(settings.value))
 }
 
-// Fetch models from API if modelsConfig provided
-const fetchModels = async () => {
-  if (!props.modelsConfig?.endpoint) return
-  
-  modelsLoading.value = true
-  try {
-    const response = await fetch(props.modelsConfig.endpoint, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        ...(props.modelsConfig.headers ?? {})
-      }
-    })
-    
-    const data = await response.json()
-    
-    // Support common API response formats
-    const models = 
-      data.models?.map((m: any) => ({ 
-        label: m.name || m.id, 
-        value: m.id 
-      })) ??
-      data?.map((m: any) => ({ 
-        label: m.name || m.id, 
-        value: m.id 
-      })) ??
-      []
-    
-    if (models.length > 0) {
-      modelOptions.value = models
-    }
-  } catch (error) {
-    console.error('Failed to fetch models:', error)
-    // Fall back to default models
-  } finally {
-    modelsLoading.value = false
-  }
-}
-
 // Auto-resize textarea
 watch(inputMessage, () => {
   if (messageInput.value) {
@@ -689,11 +607,8 @@ watch(inputMessage, () => {
   }
 })
 
-// Load settings and sessions from localStorage, fetch models
-onMounted(async () => {
-  // Fetch models if endpoint provided
-  await fetchModels()
-  
+// Load settings and sessions from localStorage
+onMounted(() => {
   const savedSettings = localStorage.getItem('ai-chat-settings')
   if (savedSettings) {
     settings.value = { ...settings.value, ...JSON.parse(savedSettings) }
