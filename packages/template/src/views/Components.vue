@@ -861,7 +861,136 @@
           </template>
         </MaCard>
       </MaCol>
+
+      <!-- Timeline Examples -->
+      <MaCol :span="24">
+        <MaCard title="Timeline">
+          <MaRow :gutter="[24, 24]">
+            <!-- Alternate (Left/Right) Timeline -->
+            <MaCol :span="24">
+              <h4 style="margin-bottom: 16px;">Alternate Layout (Left/Right)</h4>
+              <MaTimeline direction="vertical" alignment="alternate">
+                <MaTimelineItem 
+                  v-for="item in timelineData" 
+                  :key="item.id"
+                  :timestamp="item.date"
+                  :title="item.title"
+                  :description="item.description"
+                  :color="item.color"
+                />
+              </MaTimeline>
+            </MaCol>
+
+            <!-- Left-aligned Timeline -->
+            <MaCol :span="12">
+              <h4 style="margin-bottom: 16px;">Left Aligned</h4>
+              <MaTimeline direction="vertical" alignment="left">
+                <MaTimelineItem 
+                  v-for="item in timelineData.slice(0, 3)" 
+                  :key="item.id"
+                  :timestamp="item.date"
+                  :title="item.title"
+                  :description="item.description"
+                  :color="item.color"
+                />
+              </MaTimeline>
+            </MaCol>
+
+            <!-- Right-aligned Timeline -->
+            <MaCol :span="12">
+              <h4 style="margin-bottom: 16px;">Right Aligned</h4>
+              <MaTimeline direction="vertical" alignment="right">
+                <MaTimelineItem 
+                  v-for="item in timelineData.slice(0, 3)" 
+                  :key="item.id"
+                  :timestamp="item.date"
+                  :title="item.title"
+                  :description="item.description"
+                  :color="item.color"
+                />
+              </MaTimeline>
+            </MaCol>
+
+            <!-- Horizontal Timeline (Alternate Above/Below) -->
+            <MaCol :span="24">
+              <h4 style="margin-bottom: 16px;">Horizontal Layout (Alternate Above/Below)</h4>
+              <MaTimeline direction="horizontal" alignment="alternate">
+                <MaTimelineItem 
+                  v-for="item in horizontalTimelineData" 
+                  :key="item.id"
+                  :timestamp="item.date"
+                  :title="item.title"
+                  :description="item.description"
+                  :color="item.color"
+                  :photo="item.photo"
+                  :body="item.body"
+                  :footer="item.footer"
+                  clickable
+                  @click="handleTimelineItemClick"
+                />
+              </MaTimeline>
+            </MaCol>
+          </MaRow>
+          <template #footer>
+            <details>
+            <summary>Show Code</summary>
+            <pre class="code-block"><code>&lt;MaTimeline direction="vertical" alignment="alternate"&gt;
+  &lt;MaTimelineItem 
+    timestamp="Jan 2026" 
+    title="Project Started"
+    description="Initial development phase"
+    color="success"
+  /&gt;
+&lt;/MaTimeline&gt;
+
+&lt;!-- Horizontal --&gt;
+&lt;MaTimeline direction="horizontal"&gt;
+  &lt;MaTimelineItem ... /&gt;
+&lt;/MaTimeline&gt;</code></pre>
+          </details>
+          </template>
+        </MaCard>
+      </MaCol>
     </MaRow>
+
+    <!-- Timeline Detail Modal -->
+    <MaModal v-model="timelineDetailVisible" title="Timeline Event Details" size="medium">
+      <div v-if="selectedTimelineItem" style="display: flex; flex-direction: column; gap: 16px;">
+        <!-- Photo -->
+        <img 
+          v-if="selectedTimelineItem.photo" 
+          :src="selectedTimelineItem.photo"
+          alt="Event photo"
+          style="width: 100%; height: auto; border-radius: 8px; max-height: 300px; object-fit: cover;"
+        />
+        
+        <!-- Date -->
+        <div v-if="selectedTimelineItem.timestamp" style="font-size: 14px; color: var(--ma-text-secondary); font-weight: 600;">
+          {{ selectedTimelineItem.timestamp }}
+        </div>
+
+        <!-- Title -->
+        <div v-if="selectedTimelineItem.title" style="font-size: 20px; font-weight: 700; color: var(--ma-text-main);">
+          {{ selectedTimelineItem.title }}
+        </div>
+
+        <!-- Body -->
+        <div v-if="selectedTimelineItem.body" style="font-size: 14px; line-height: 1.6; color: var(--ma-text-secondary);">
+          {{ selectedTimelineItem.body }}
+        </div>
+
+        <!-- Footer/Citations -->
+        <div 
+          v-if="selectedTimelineItem.footer" 
+          style="padding-top: 12px; border-top: 1px solid var(--ma-border); font-size: 13px; color: var(--ma-text-muted);"
+        >
+          {{ selectedTimelineItem.footer }}
+        </div>
+      </div>
+      <template #footer>
+        <MaButton @click="timelineDetailVisible = false">Close</MaButton>
+      </template>
+    </MaModal>
   </div>
 </template>
 
@@ -882,6 +1011,8 @@ const files = ref([])
 const drawerVisible = ref(false)
 const modalVisible = ref(false)
 const modalSize = ref('medium')
+const timelineDetailVisible = ref(false)
+const selectedTimelineItem = ref<any>(null)
 
 const showConfirm = () => {
   MaConfirm({
@@ -893,6 +1024,11 @@ const showConfirm = () => {
       return new Promise(resolve => setTimeout(resolve, 1000))
     }
   })
+}
+
+const handleTimelineItemClick = (itemData: any) => {
+  selectedTimelineItem.value = itemData
+  timelineDetailVisible.value = true
 }
 
 const activeStep = ref(1)
@@ -975,6 +1111,78 @@ const nextStep = () => {
 const handleTagClose = () => {
   console.log('Tag closed')
 }
+
+// Timeline Demo Data
+const timelineData = [
+  { id: 1, date: 'Jan 2026', title: 'Project Kickoff', description: 'Initial planning and team assembly completed', color: 'success' as const },
+  { id: 2, date: 'Feb 2026', title: 'Design Phase', description: 'UI/UX designs finalized and approved', color: 'primary' as const },
+  { id: 3, date: 'Mar 2026', title: 'Development', description: 'Core features implemented and tested', color: 'info' as const },
+  { id: 4, date: 'Apr 2026', title: 'Beta Release', description: 'Released to early testers for feedback', color: 'warning' as const },
+  { id: 5, date: 'May 2026', title: 'Launch', description: 'Official public release', color: 'danger' as const }
+]
+
+// Horizontal Timeline Demo Data (staggered dates like company history)
+const horizontalTimelineData = [
+  { 
+    id: 1, 
+    date: '2015', 
+    title: 'Founded', 
+    description: 'Company established', 
+    color: 'primary' as const,
+    body: 'Our journey began in 2015 with a vision to revolutionize the admin framework space. We assembled a talented team and launched our first product.',
+    photo: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop',
+    footer: 'Founded by John Smith and Jane Doe'
+  },
+  { 
+    id: 2, 
+    date: '2017 Q2', 
+    title: 'Seed Round', 
+    description: 'Raised initial funding', 
+    color: 'success' as const,
+    body: 'We successfully closed our seed round with leading venture capital firms, securing $2M to accelerate product development and market expansion.',
+    photo: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop',
+    footer: 'Led by Sequoia Capital'
+  },
+  { 
+    id: 3, 
+    date: '2019 Jan', 
+    title: 'Product Launch', 
+    description: 'Released v1.0', 
+    color: 'info' as const,
+    body: 'Version 1.0 was officially released with comprehensive component library, full TypeScript support, and extensive documentation. The launch was a massive success with over 10k downloads in the first week.',
+    photo: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop',
+    footer: 'Download count: 10,000+ in week 1'
+  },
+  { 
+    id: 4, 
+    date: '2021 Mar', 
+    title: 'Series A', 
+    description: '$10M funding secured', 
+    color: 'warning' as const,
+    body: 'Our Series A funding round closed with $10M in capital. This funding enabled us to expand our team globally, establish offices in 3 continents, and invest heavily in R&D.',
+    photo: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop',
+    footer: 'Funding partners: Sequoia Capital, Accel, Bessemer Venture'
+  },
+  { 
+    id: 5, 
+    date: '2023 Sep', 
+    title: 'Expansion', 
+    description: 'Global offices opened', 
+    color: 'primary' as const,
+    body: 'We opened offices in Silicon Valley, London, Singapore, and Tokyo. Our team grew from 50 to 200+ employees across multiple time zones.',
+    photo: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop',
+    footer: 'Team size: 200+ employees across 4 continents'
+  },
+  { 
+    id: 6, 
+    date: '2025 Q1', 
+    title: 'IPO', 
+    description: 'Went public on NASDAQ', 
+    color: 'success' as const,
+    body: 'We successfully completed our initial public offering on NASDAQ under ticker symbol MAF. The IPO was oversubscribed 3x and raised $100M. Our stock opened at $45/share and is now a market leader.',
+    footer: 'NASDAQ: MAF | Market Cap: $5B+'
+  }
+]
 </script>
 
 <style scoped>
